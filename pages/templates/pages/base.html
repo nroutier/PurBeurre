@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Pur Beurre</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'pages/img/logo_pur_beurre-favicon.png' %}">
+
+    <!-- Font Awesome Icons -->
+    <link href="{% static 'pages/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic'
+        rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="{% static 'pages/vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+
+    <!-- Theme CSS - Includes Bootstrap -->
+    <link href="{% static 'pages/css/creative.min.css' %}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="{% url 'home' %}">
+                <img class="logo" src="{% static 'pages/img/logo_pur_beurre.png' %}" alt=""><img> Pur Beurre</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">Recherche</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#services">Mon compte</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#portfolio">Mes aliments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#contact">Déconnexion</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock content %}
+
+    <!-- Footer -->
+    <footer class="bg-light py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-sm-6 ml-auto text-center"><a href="{% url 'legal' %}">Mentions légales</a></div>
+                <div class="col-sm-6 mr-auto text-center"><a href=#contact>Contact</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'pages/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'pages/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'pages/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'pages/vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'pages/js/creative.min.js' %}"></script>
+
+</body>
+
+</html>
