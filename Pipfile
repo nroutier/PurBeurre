@@ -9,6 +9,8 @@ verify_ssl = true
 django = "*"
 pylint = "*"
 psycopg2 = "*"
+django-crispy-forms = "*"
+django-widget-tweaks = "*"
 
 [requires]
 python_version = "3.7"

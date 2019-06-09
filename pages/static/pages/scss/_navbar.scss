@@ -30,6 +30,7 @@
     // Base styling for the navbar - screen sizes greater than the large breakpoint
     box-shadow: none;
     background-color: transparent;
+    
     .navbar-brand {
       color: fade-out($white, .3);
       &:hover {
