@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "0efa37bc4bccd2b21449c129812c524ef829ae2cc8e82828dd39bc5df379854b"
+            "sha256": "c34a69d27dc62ca04b17b6e15ff3cd3e783985867d4d79f5addf84f5bcc85401"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -31,6 +31,13 @@
             "markers": "sys_platform == 'win32'",
             "version": "==0.4.1"
         },
+        "dj-database-url": {
+            "hashes": [
+                "sha256:4aeaeb1f573c74835b0686a2b46b85990571159ffc21aa57ecd4d1e1cb334163",
+                "sha256:851785365761ebe4994a921b433062309eb882fedd318e1b0fcecc607ed02da9"
+            ],
+            "version": "==0.5.0"
+        },
         "django": {
             "hashes": [
                 "sha256:753d30d3eb078064d2ddadfea65083c9848074a7f93d7b4dc7fa6b1380d278f5",
@@ -47,13 +54,29 @@
             "index": "pypi",
             "version": "==1.7.2"
         },
-        "django-widget-tweaks": {
+        "django-heroku": {
             "hashes": [
-                "sha256:a69cba6c8a6b98f0cf6eef0535f8212d635e19044ee4533d4d78df700c2e233f",
-                "sha256:bc645ef88307bc4ac269ee8ee9e572be814cd4a125c2bb6edb59ffcdc194982d"
+                "sha256:2bc690aab89eedbe01311752320a9a12e7548e3b0ed102681acc5736a41a4762",
+                "sha256:6af4bc3ae4a9b55eaad6dbe5164918982d2762661aebc9f83d9fa49f6009514e"
             ],
             "index": "pypi",
-            "version": "==1.4.3"
+            "version": "==0.3.1"
+        },
+        "django-widget-tweaks": {
+            "hashes": [
+                "sha256:65c960f3d75008a285e4b10f4d21f9eae4160fd77a0f6097ad545185f8648bd6",
+                "sha256:f2e2c9c9be1ccc59061e248dcc2144f4906d594abe1a563902f4bdf6aa14e432"
+            ],
+            "index": "pypi",
+            "version": "==1.4.5"
+        },
+        "gunicorn": {
+            "hashes": [
+                "sha256:aa8e0b40b4157b36a5df5e599f45c9c76d6af43845ba3b3b0efe2c70473c2471",
+                "sha256:fa2662097c66f920f53f70621c6c58ca4a3c4d3434205e608e121b5b3b71f4f3"
+            ],
+            "index": "pypi",
+            "version": "==19.9.0"
         },
         "isort": {
             "hashes": [
@@ -158,6 +181,13 @@
             ],
             "markers": "implementation_name == 'cpython'",
             "version": "==1.4.0"
+        },
+        "whitenoise": {
+            "hashes": [
+                "sha256:118ab3e5f815d380171b100b05b76de2a07612f422368a201a9ffdeefb2251c1",
+                "sha256:42133ddd5229eeb6a0c9899496bdbe56c292394bf8666da77deeb27454c0456a"
+            ],
+            "version": "==4.1.2"
         },
         "wrapt": {
             "hashes": [

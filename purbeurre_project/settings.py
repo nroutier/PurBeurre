@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2znop=--^qh95lq0vehu+_etyyb7vf=&a-2=rh^ud7w2x2uq)u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ.get("DEBUG", False))
 
 ALLOWED_HOSTS = []
 
@@ -138,4 +139,5 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+if os.environ.get('ENV') == 'HEROKU':
+    django_heroku.settings(locals())

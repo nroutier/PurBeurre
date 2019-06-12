@@ -11,6 +11,8 @@ pylint = "*"
 psycopg2 = "*"
 django-crispy-forms = "*"
 django-widget-tweaks = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [requires]
 python_version = "3.7"
