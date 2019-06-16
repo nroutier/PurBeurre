@@ -1,0 +1,16 @@
+{% extends 'base_page.html' %}
+{% block title %}Mon compte{% endblock title %}
+{% block header_title %}Ahoy {{ user.username }} !{% endblock header_title %}
+
+{% block page_content %}
+<section class="page-body bg-biscuit p-2">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2>{{ user.email }}</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock page_content %}
