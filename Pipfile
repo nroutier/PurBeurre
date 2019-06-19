@@ -13,6 +13,7 @@ django-crispy-forms = "*"
 django-widget-tweaks = "*"
 gunicorn = "*"
 django-heroku = "*"
+pep8 = "*"
 
 [requires]
 python_version = "3.7"
