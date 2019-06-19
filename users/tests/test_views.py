@@ -55,14 +55,14 @@ class LoginViewTests(TestCase):
         data = {'username': self.username, 'password': self.password}
         response = self.client.post('/users/login/', data=data, follow=True)
         self.assertIn(('/users/account/', 302), response.redirect_chain)
-        self.assertTrue(response.context['user'].is_active)
+        self.assertIn('_auth_user_id', self.client.session)
 
     def test_failed_login(self):
         get_user_model().objects.create_user(
             self.username, self.email, self.password)
         data = {'username': self.username, 'password': ""}
-        response = self.client.post('/users/login/', data=data, follow=True)
-        self.assertFalse(response.context['user'].is_active)
+        self.client.post('/users/login/', data=data, follow=True)
+        self.assertTrue('_auth_user_id' not in self.client.session)
 
 
 class AccountViewTests(TestCase):
