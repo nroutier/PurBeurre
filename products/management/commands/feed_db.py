@@ -1,11 +1,17 @@
+""" Module that defines the class FeedDb and Command to define a custom
+django admin command to feed the database with categories and products
+retrieved from Openfoodfacts API """
+
 from django.core.management.base import BaseCommand, CommandError
 from products.models import Product, Category
 from products.get_data_from_openfoodfacts import GetDataFromOpenfoodfacts
 
 
 class FeedDb:
+    """ Class used to call get_data_from_openfoodfacts
+    and feed the database """
 
-    def __init__(self, nb_prod=None, nb_cat=None, categories=None):
+    def __init__(self, nb_prod=None, nb_cat=None, categories=[]):
         self.nb_prod = nb_prod
         self.nb_cat = nb_cat
         self.categories = categories
@@ -40,6 +46,9 @@ class FeedDb:
 
 
 class Command(BaseCommand):
+    """ Class used to defin the custom admin commands to feed or delete Categories
+    and Products to the database """
+
     help = 'Feed the database with data fetched with Openfoodfacts API'
 
     def add_arguments(self, parser):
@@ -76,7 +85,7 @@ class Command(BaseCommand):
         else:
             run = FeedDb(
                 kwargs['nb_prod'],
-                kwargs['categories'],
-                kwargs['nb_cat']
+                kwargs['nb_cat'],
+                kwargs['categories']                
             )
             run.add_data()

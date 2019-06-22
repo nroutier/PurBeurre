@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Product(models.Model):
+    """ Class defining the product model """
 
     NUTRITION_GRADE_CHOICES = [
         ('A', 'A'),
@@ -30,9 +31,12 @@ class Product(models.Model):
 
 
 class Category(models.Model):
+    """ Class defining the Category model """
 
     name = models.CharField(max_length=200)
-    products = models.ManyToManyField("Product")
+    products = models.ManyToManyField(
+        "Product",
+        related_name='categories')
 
     def __str__(self):
         return self.name

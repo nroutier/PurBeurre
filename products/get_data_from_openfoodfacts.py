@@ -1,4 +1,4 @@
-""" Module that defines the class Off_api """
+""" Module that defines the class GetDataFromOpenfoodfacts """
 
 import requests
 
@@ -6,27 +6,24 @@ import requests
 class GetDataFromOpenfoodfacts:
     """ Class used to get the data from Openfoodfacts API """
 
-    def __init__(self, nb_prod=None, nb_cat=None, categories=None):
+    def __init__(self, nb_prod=None, nb_cat=None, categories=[]):
         self.cats = {}
         self.nb_cat = nb_cat
         self.nb_prod = nb_prod
         self.categories = categories
 
     def get_categories(self):
-
-        """ Function that gets data from openfoodfact api
-        and return a dictionnary of categories with products """
+        """ Function that retreive categories of products from openfoodfact api
+        and feed a dictionnary of categories """
         if not self.categories:
             cat_url = "https://fr.openfoodfacts.org/categories.json"
             r = requests.get(cat_url)
             all_cat = r.json()
 
             for tag in all_cat["tags"]:
-                if(
-                    (self.nb_cat) and
-                    (self.cats.__len__() >= self.nb_cat)
-                ):
-                    break
+                if self.nb_cat:
+                    if self.cats.__len__() >= self.nb_cat:
+                        break
                 if "Aliment" not in tag["name"]:
                     self.cats[tag["name"]] = {
                         "url": tag["url"],
@@ -37,6 +34,8 @@ class GetDataFromOpenfoodfacts:
                 self.cats[cat] = {"products": {}}
 
     def get_products(self):
+        """ Function that retreive products for each categories from openfoodfact api
+        and feed a dictionnary of categories with associated products """
         self.get_categories()
         for cat in self.cats:
             search_url = "https://fr.openfoodfacts.org/cgi/search.pl?"
@@ -51,12 +50,9 @@ class GetDataFromOpenfoodfacts:
             prods = r.json()
 
             for prod in prods["products"]:
-                if (
-                    (self.nb_prod) and
-                    (self.cats[cat]["products"].__len__() >= self.nb_prod)
-                ):
-                    break
-
+                if self.nb_prod:
+                    if self.cats[cat]["products"].__len__() >= self.nb_prod:
+                        break
                 if self.check_product_data(prod):
                     self.cats[cat]["products"][prod["product_name"]] = {
                         "code": prod["code"],
@@ -68,6 +64,7 @@ class GetDataFromOpenfoodfacts:
                     }
 
     def check_product_data(self, product):
+        """ Function that checks if a product has all needed data """
         fields = [
             "code",
             "product_name",
