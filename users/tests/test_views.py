@@ -35,7 +35,6 @@ class LoginViewTests(TestCase):
     email = 'newuser@email.com'
     password = 'passw0rd!'
 
-
     def test_login_page_status_code(self):
         response = self.client.get('/users/login/')
         self.assertEqual(response.status_code, 200)
@@ -66,7 +65,6 @@ class LoginViewTests(TestCase):
 
 
 class AccountViewTests(TestCase):
-
 
     username = 'newuser'
     email = 'newuser@email.com'
