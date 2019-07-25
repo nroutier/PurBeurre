@@ -46,9 +46,10 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto my-2 my-lg-0">
                     <li class="nav-item">
-                        <form class="navbar-form form-inline" action="">
+                        <form class="navbar-form form-inline"  method="POST" action="{% url 'products:searched_substitutes' %}">
+                            {% csrf_token %}
                             <div class="form-group">
-                                <input type="search" class="form-control form-control-sm" id="searched-product"
+                                <input type="text" name="{{ form.searched_product.name }}" class="form-control form-control-sm" id="searched-product"
                                     placeholder="Chercher">
                                 <button class="btn btn-primary btn-sm" type="submit"><i class="fas fa-search"></i></button>
                             </div>

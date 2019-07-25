@@ -19,9 +19,10 @@
             consommez tous les jours.</p>
         </div>
         <div class="col-lg-8 d-flex justify-content-center">
-          <form class="form-inline" action="">
+          <form class="form-inline" method="POST" action="{% url 'products:searched_substitutes' %}">
+            {% csrf_token %}
             <label class="sr-only" for="searched-product">Produit à rechercher</label>
-            <input type="text" class="form-control mb-2" id="searched-product" placeholder="Entrer le nom d'un produit">
+            <input type="text" name="{{ form.searched_product.name }}" class="form-control mb-2" id="searched-product" placeholder="Entrer le nom d'un produit">
             <button class="btn btn-primary mb-2 js-scroll-trigger" type="submit">Chercher</button>
           </form>
         </div>

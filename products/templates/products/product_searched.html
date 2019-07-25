@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Substituts - {{ searched_product.name }}{% endblock title %}
+
+
+{% block content %}
+
+<header class="bg-product" style="padding-top: 10rem; height: 300px; width: 100%; margin: auto; background-color: black; background-size: contain; background-image: url('{{ searched_product.image }}'); background-repeat: no-repeat; background-position: center;">
+    <div class="row h-100 align-items-center justify-content-center text-center">
+        <!-- <div class="col-lg-10 align-self-end"> -->
+        <div class="col-lg-10">
+            <p><img style="height: 50px; margin: auto;" src="https://static.openfoodfacts.org/images/misc/nutriscore-{{ searched_product.nutrition_grade|lower }}.svg" alt=""></p>
+            <h2 style="background-color: rgba(0, 0, 0, 0.5);" class="text-uppercase text-white font-weight-bold">{{ searched_product.name }}</h1>
+            {% block header %}{% endblock %}
+            <!-- <hr class="divider my-4"> -->
+        </div>
+    </div>
+</header>
+
+
+<section class="page-body bg-biscuit p-2">
+    <div class="container">
+        <div class="text-center">
+            <p>Vous pouvez remplacer cet aliment par:</p>
+            <br>
+        </div>
+        <div class="row justify-content-center">
+            {% if substitued_products %}
+                {% for product in substitued_products %}
+                <div class="col-sm-12 col-lg-4 ml-auto text-center">
+                    <p><img style="height: 100px; margin: auto;" src="{{ product.image }}" alt=""></p>
+                    <p><img style="height: 50px; margin: auto;" src="https://static.openfoodfacts.org/images/misc/nutriscore-{{ product.nutrition_grade|lower }}.svg" alt=""></p>
+                    <p><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></p>
+                </div>
+                {% endfor %}
+                <div class="pagination">
+                    <span class="step-links">
+                        {% if substitued_products.has_previous %}
+                            <a href="?page=1">&laquo; Début</a>
+                            <a href="?page={{ substitued_products.previous_page_number }}">Précédente</a>
+                        {% endif %}
+                
+                        <span class="current">
+                            Page {{ substitued_products.number }} sur {{ substitued_products.paginator.num_pages }}.
+                        </span>
+                
+                        {% if substitued_products.has_next %}
+                            <a href="?page={{ substitued_products.next_page_number }}">Suivante</a>
+                            <a href="?page={{ substitued_products.paginator.num_pages }}">Dernière &raquo;</a>
+                        {% endif %}
+                    </span>
+                </div>
+            {% else %}
+                <p>Nous n'avons pas trouvé de substitut plus sain pour ce produit</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

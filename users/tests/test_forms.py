@@ -5,7 +5,6 @@ from ..forms import CustomUserCreationForm
 
 class SignupUsercreationFormTests(TestCase):
 
-    
     username = 'newuser'
     email = 'newuser@email.com'
     password = 'passw0rd!'
